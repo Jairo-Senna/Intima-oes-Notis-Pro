@@ -665,5 +665,4 @@ const ConfirmationModal: React.FC<{isOpen: boolean, onClose: () => void, message
     </Modal>
 );
 
-// FIX: Removed extraneous text after the export statement.
 export default App;
