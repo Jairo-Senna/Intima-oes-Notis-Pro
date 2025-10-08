@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      // CORREÇÃO: Define o caminho base como o nome deste repositório
-      base: '/Controle-de-entregas-Log-Servi-os/', 
+      // PROPRIEDADE CRUCIAL: Define o caminho base como o nome deste repositório
+      base: '/Intima-oes-Notis-Pro/', 
       server: {
         port: 3000,
         host: '0.0.0.0',
