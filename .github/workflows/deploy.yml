@@ -1,0 +1,53 @@
+# .github/workflows/deploy.yml
+
+name: Deploy ao GitHub Pages com Vite
+
+# Define quando este workflow será executado
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Define permissões necessárias para o GitHub Pages
+permissions:
+  contents: read
+  pages: write 
+  id-token: write
+
+# Define o conjunto de jobs (tarefas) a serem executadas
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    # CORREÇÃO: Adiciona o ambiente de deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Dependências e Construir (Build)
+        run: |
+          npm install
+          npm run build # Cria a pasta 'dist'
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v4
+        with:
+          static_site_generator: vite
+
+      - name: Fazer Upload do Artefato de Build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy ao GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
