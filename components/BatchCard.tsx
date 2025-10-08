@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Batch, DeliveryPerson } from '../types';
+import { Batch, DeliveryPerson } from '../types.ts';
 
 interface BatchCardProps {
     batch: Batch;

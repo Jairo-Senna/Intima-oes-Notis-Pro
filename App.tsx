@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { z } from 'zod';
-import { Batch, DeliveryPerson, View } from './types';
-import { generateBatchDescription } from './services/geminiService';
-import { MenuIcon, CloseIcon, DashboardIcon, ArchiveIcon, UserGroupIcon, UserAddIcon, PlusIcon, GeminiIcon } from './components/icons';
-import Modal from './components/Modal';
-import BatchCard from './components/BatchCard';
+import { Batch, DeliveryPerson, View } from './types.ts';
+import { generateBatchDescription } from './services/geminiService.ts';
+import { MenuIcon, CloseIcon, DashboardIcon, ArchiveIcon, UserGroupIcon, UserAddIcon, PlusIcon, GeminiIcon } from './components/icons.tsx';
+import Modal from './components/Modal.tsx';
+import BatchCard from './components/BatchCard.tsx';
 
 // --- CONSTANTS ---
 const DELIVERY_FEE = 3;
@@ -665,4 +665,5 @@ const ConfirmationModal: React.FC<{isOpen: boolean, onClose: () => void, message
     </Modal>
 );
 
+// FIX: Removed extraneous text after the export statement.
 export default App;
